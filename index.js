@@ -7,6 +7,7 @@ const port = process.env.PORT || 5000;
 app.use(cors());
 app.use(express.json());
 
+console.log('asdasdasdasds')
 
 const { MongoClient, ServerApiVersion, ObjectId } = require('mongodb');
 const uri = `mongodb+srv://${process.env.USER_DB}:${process.env.PASS_DB}@cluster0.np7fjqr.mongodb.net/?retryWrites=true&w=majority`;
@@ -28,7 +29,7 @@ async function run() {
         res.send(result);
     })
 
-    app.get('/job/:id', async (req, res) => {
+    app.get('/jobs/:id', async (req, res) => {
         const id = req.params.id;
         const query = { _id: new ObjectId(id) };
         const result = await jobsCollection.findOne(query);
